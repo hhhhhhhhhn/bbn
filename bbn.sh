@@ -10,10 +10,10 @@ DATE="$(date +'%D (%A)')"
 
 touch $FILE
 
-grep -q "$DATE" $FILE && DATE="" || DATE="\n# ${DATE}\n\n"
+grep -q "$DATE" $FILE && DATE="" || DATE="\n# ${DATE}\n\n" #If date already in file.
 
 nano $TEMP_FILE -t -x # Arguments hide shortcuts and save without asking.
 
-echo -e "${DATE}$(cat $TEMP_FILE)\n" >> $FILE
+echo -e "${DATE}$(<$TEMP_FILE)\n" >> $FILE
 
 rm $TEMP_FILE
