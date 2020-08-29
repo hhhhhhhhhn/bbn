@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -z $NOTES_DIR ] && [ ! -d $NOTES_DIR ] && echo "NOTES_DIR enviroment variable doesn't exist or is not a directory." && exit 1
+[ -z $NOTES_DIR ] || [ ! -d $NOTES_DIR ] && echo "NOTES_DIR enviroment variable doesn't exist or is not a directory." && exit 1
 
 [ -z $1 ] && NOTE="main" || NOTE=$1
 
