@@ -4,7 +4,7 @@
 
 [ -z $1 ] && NOTE="main" || NOTE=$1
 
-TEMP_FILE="${NOTES_DIR}/temp.file"
+TEMP_FILE="/tmp/bbn.md"
 FILE="${NOTES_DIR}/${NOTE}.md"
 DATE="$(date +'%D (%A)')"
 
@@ -12,7 +12,7 @@ touch $FILE
 
 grep -q "$DATE" $FILE && DATE="" || DATE="\n# ${DATE}\n\n" #If date already in file.
 
-nano $TEMP_FILE -t -x # Arguments hide shortcuts and save without asking.
+$EDITOR $TEMP_FILE
 
 echo -e "${DATE}$(<$TEMP_FILE)\n" >> $FILE
 
